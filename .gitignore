@@ -40,7 +40,7 @@ hs_err_pid*
 dependabot/__pycache__/*
 
 # BBE Generation
-**/bbe-generator/**.json
+bbe-generator/*.json
 **/json-gen/examples
 
 # MDBook Generation
