@@ -38,3 +38,10 @@ hs_err_pid*
 
 /ballerinaByExample/vendor/pygments/tests/examplefiles/*
 dependabot/__pycache__/*
+
+# BBE Generation
+intermediate.json
+**/json-gen/examples
+
+# MDBook Generation
+**/mdbook
