@@ -6,7 +6,7 @@ import ballerina/file;
 
 // BBE content json record
 public type jsonContent record {
-    string bbeName;
+    string name;
     string url;
     json[] resources;
     string description;
@@ -118,7 +118,7 @@ public function generateBBE(string examplesPath) returns error? {
 
                 // json content for
                 jsonContent bbeContent = {
-                    bbeName: name,
+                    name: name,
                     url: url,
                     resources: [],
                     description: "",
@@ -236,8 +236,8 @@ public function generateBBE(string examplesPath) returns error? {
 
         // json file with category information
         json bbeCatContent = {
-            category: title,
-            samples: subcategories
+            "name": title,
+            "examples": subcategories
         };
 
         // add bbe's content to the json file
@@ -247,7 +247,7 @@ public function generateBBE(string examplesPath) returns error? {
     // intermediate JSON file
     json intermediate = {
         "title": "intermediate json",
-        "BBEs": bbes
+        "categories": bbes
     };
 
     // printing the not found bbes
