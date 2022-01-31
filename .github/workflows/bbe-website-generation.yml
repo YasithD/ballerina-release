@@ -11,6 +11,6 @@ jobs:
         uses: ballerina-platform/ballerina-action@slbeta6
       
       - name: Check ballerina version
-        run: bal -v
+        run: bal --version
 
 
