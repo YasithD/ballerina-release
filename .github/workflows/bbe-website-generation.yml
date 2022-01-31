@@ -1,0 +1,14 @@
+name: bbe-website-generation
+
+on: [push]
+
+jobs:
+  bbe-generation:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Ballerina Action
+        uses: ballerina-platform/ballerina-action@slbeta6
+        run: bal -v
+
+
