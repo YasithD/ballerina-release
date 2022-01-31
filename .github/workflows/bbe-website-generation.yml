@@ -1,7 +1,5 @@
 name: bbe-website-generation
 
-on: [push]
-
 jobs:
   bbe-generation:
     runs-on: ubuntu-latest
