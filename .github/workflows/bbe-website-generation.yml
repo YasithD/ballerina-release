@@ -1,5 +1,7 @@
 name: bbe-website-generation
 
+on: [push]
+
 jobs:
   bbe-generation:
     runs-on: ubuntu-latest
@@ -7,6 +9,8 @@ jobs:
     steps:
       - name: Ballerina Action
         uses: ballerina-platform/ballerina-action@slbeta6
+      
+      - name: Check ballerina version
         run: bal -v
 
 
