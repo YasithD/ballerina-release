@@ -7,13 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - name: Ballerina Action
         uses: ballerina-platform/ballerina-action@slbeta6
+
+      - name: Checkout code
+        uses: actions/checkout@v2
       
       - name: Check ballerina version
-        run: bal --version
+        run: bal -v
 
 
