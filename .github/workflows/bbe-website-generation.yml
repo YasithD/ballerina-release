@@ -19,10 +19,15 @@ jobs:
         uses: ballerina-platform/ballerina-action@slbeta6
         env:
           JAVA_HOME: /usr/lib/jvm/default-jvm
-    
       
-      - name: Check ballerina version
-        run: bal -v
+      - name: Clone ballerina-distribution repo
+        run: git clone https://github.com/ballerina-platform/ballerina-distribution.git
+
+      - name: Execute JSON generation script
+        run: |
+          cd bbe-generator/json-gen
+          cp ../../ballerina-distribution/examples/ .
+
 
       
 
