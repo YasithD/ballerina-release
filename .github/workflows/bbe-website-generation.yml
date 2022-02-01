@@ -16,9 +16,9 @@ jobs:
       - name: Copy Examples Directory into json-gen
         run: |
           cd bbe-generator/json-gen
-          cp -r ../../ballerina-distribution/examples/ .
+          cp ../../ballerina-distribution/examples/ .
           
-      - name: Run Script
+      - name: Generate intermediate.json
         uses: ballerina-platform/ballerina-action@slbeta6
         with:
           args:
