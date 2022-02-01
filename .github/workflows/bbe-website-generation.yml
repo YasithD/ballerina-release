@@ -25,8 +25,11 @@ jobs:
 
       - name: Execute JSON generation script
         run: |
+          ls
           cd bbe-generator/json-gen
           cp -r ../../ballerina-distribution/examples/ .
+          ls
+          
 
 
       
