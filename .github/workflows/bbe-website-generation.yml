@@ -25,7 +25,9 @@ jobs:
             run bbe-generator/json-gen/generate.bal
 
       - name: Grant Permission for Outputs Folder
-        run: cat /etc/passwd      
+        run: |
+          cat /etc/passwd  
+          chown -R root:root .    
 
       - name: Create mdbook
         uses: peaceiris/actions-mdbook@v1
