@@ -10,8 +10,14 @@ jobs:
       - name: Checkout Actions
         uses: actions/checkout@v2
           
-      - name: Ballerina Action
-        uses: ballerina-platform/ballerina-action@slbeta6
+      - name: Ballerina Build
+        uses: ballerina-platform/ballerina-action/@nightly
+        with:
+          args:
+            pack ./twitter
+        env:
+          JAVA_HOME: /usr/lib/jvm/default-jvm
+          DEV_ENVIRONMENT_NAME: ${{ secrets.DEV_ENVIRONMENT_NAME }}
       
       - name: Clone ballerina-distribution repo
         run: git clone https://github.com/ballerina-platform/ballerina-distribution.git
