@@ -15,6 +15,14 @@ jobs:
         with:
           args: 
             build
+            
+      - name: Ballerina Push
+        uses: ballerina-platform/ballerina-action@master
+        with:
+          env: 
+            BALLERINA_CENTRAL_ACCESS_TOKEN = ${{ secrets.BallerinaToken }}
+          args: 
+            push       
       
       - name: Check ballerina version
         run: bal -v
