@@ -1,6 +1,6 @@
 name: bbe-website-generation
 
-on: [push, workflow_dispatch]
+on: workflow_dispatch
 
 jobs:
   bbe-generation:
@@ -26,7 +26,7 @@ jobs:
       - name: Execute JSON generation script
         run: |
           cd bbe-generator/json-gen
-          cp ../../ballerina-distribution/examples/ .
+          cp -r ../../ballerina-distribution/examples/ .
 
 
       
