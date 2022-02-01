@@ -1,6 +1,6 @@
 name: bbe-website-generation
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   bbe-generation:
