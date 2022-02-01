@@ -27,7 +27,7 @@ jobs:
       - name: Grant Permission for Outputs Folder
         run: |
           cat /etc/passwd  
-          chown -R root:root .    
+          chown -R runner:runner ./bbe-generator/outputs    
 
       - name: Create mdbook
         uses: peaceiris/actions-mdbook@v1
