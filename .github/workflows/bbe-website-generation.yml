@@ -22,7 +22,7 @@ jobs:
         uses: ballerina-platform/ballerina-action@slbeta6
         with:
           args:
-            run ./generate.bal
+            run ./bbe-generator/json-gen/generate.bal
           
 
 
