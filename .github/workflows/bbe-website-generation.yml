@@ -13,7 +13,7 @@ jobs:
           java-version: 11
     
       - name: Ballerina Action
-        uses: ballerina-platform/ballerina-action@slbeta6
+        uses: ballerina-platform/ballerina-action/@nightly
         with:
           args: pack ./twitter
         env:
