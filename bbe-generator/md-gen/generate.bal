@@ -4,7 +4,7 @@ import ballerina/file;
 import ballerina/regex;
 
 // directories
-string outputsDir = "../outputs";
+string outputsDir = "./bbe-generation/outputs";
 string mdBookName = "mdbook";
 
 // add file content
