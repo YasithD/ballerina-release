@@ -26,8 +26,8 @@ public type resourceContent record {
 string absolutePath = check file:getAbsolutePath("./");
 
 // Directories - Inputs
-string examplesPath = "./bbe-generation/json-gen/examples";
-string outputPath = "./bbe-generation/outputs/intermediate.json";
+string examplesPath = "./bbe-generator/json-gen/examples";
+string outputPath = "./bbe-generator/outputs/intermediate.json";
 
 // read a JSON file
 public function read(string fileName) returns json|error {
