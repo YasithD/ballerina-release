@@ -26,6 +26,13 @@ jobs:
         with:
           args:
             run bbe-generator/json-gen/generate.bal
+
+      - name: Create mdbook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: 'latest'
+
+      - run: mdbook init --title "mdbook" ./bbe-generator/outputs/
           
 
 
