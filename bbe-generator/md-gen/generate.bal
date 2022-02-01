@@ -5,6 +5,7 @@ import ballerina/regex;
 
 // directories
 string outputsDir = "../outputs";
+string mdBookName = "mdbook";
 
 // add file content
 public function addContent(string title, json example) returns error? {
@@ -21,7 +22,7 @@ public function addContent(string title, json example) returns error? {
     }
 
     // file path for the BBE
-    string mdFile = outputsDir + "/mdbook/src/categories/" + title + "/" + url + ".md";
+    string mdFile = outputsDir + "/" + mdBookName + "/src/categories/" + title + "/" + url + ".md";
 
     // read the md file
     // string mdContent = check io:fileReadString(mdFile) + "\n\n";
@@ -126,6 +127,6 @@ public function main() returns error? {
     }
 
     // save navigation to SUMMARY.md
-    string dirSummary = check file:joinPath(outputsDir, "/mdbook/src/SUMMARY.md");
+    string dirSummary = check file:joinPath(outputsDir, "/" + mdBookName + "/src/SUMMARY.md");
     check io:fileWriteString(dirSummary, mdContent);
 }

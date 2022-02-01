@@ -10,10 +10,9 @@ jobs:
       - name: Ballerina Action
         uses: ballerina-platform/ballerina-action@slbeta6
 
-      - name: Checkout code
-        uses: actions/checkout@v2
-      
-      - name: Check ballerina version
+      - name: Checking Ballerina Version
         run: bal -v
+
+      
 
 
