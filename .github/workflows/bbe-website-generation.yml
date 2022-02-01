@@ -27,8 +27,8 @@ jobs:
           args:
             run bbe-generator/json-gen/generate.bal
 
-      # - name: Grant Permission for Outputs Folder
-      #   run: chmod -R 777 ./bbe-generator/outputs      
+      - name: Grant Permission for Outputs Folder
+        run: chmod -R +r ./bbe-generator/outputs      
 
       - name: Create mdbook
         uses: peaceiris/actions-mdbook@v1
