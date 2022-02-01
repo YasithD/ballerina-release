@@ -15,7 +15,8 @@ jobs:
       - name: Ballerina Action
         uses: ballerina-platform/ballerina-action/@nightly
         with:
-          args: pack ./twitter
+          args:
+            pack ./twitter
         env:
           JAVA_HOME: /usr/lib/jvm/default-jvm
       
