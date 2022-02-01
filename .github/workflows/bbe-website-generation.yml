@@ -7,10 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v2
+      
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+          
       - name: Ballerina Action
         uses: ballerina-platform/ballerina-action@slbeta6
-
-      - name: Checking Ballerina Version
+        env:
+          JAVA_HOME: /usr/lib/jvm/default-jvm
+    
+      
+      - name: Check ballerina version
         run: bal -v
 
       
