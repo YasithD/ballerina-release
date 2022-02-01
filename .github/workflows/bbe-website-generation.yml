@@ -9,20 +9,17 @@ jobs:
     steps:
       - name: Checkout Actions
         uses: actions/checkout@v2
+      
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+          
+      - name: Ballerina Action
+        uses: ballerina-platform/ballerina-action@slbeta6
+        env:
+          JAVA_HOME: /usr/lib/jvm/default-jvm
     
-      - name: Ballerina Build
-        uses: ballerina-platform/ballerina-action@master
-        with:
-          args: 
-            build
-            
-      - name: Ballerina Push
-        uses: ballerina-platform/ballerina-action@master
-        with:
-          env: 
-            BALLERINA_CENTRAL_ACCESS_TOKEN = ${{ secrets.BallerinaToken }}
-          args: 
-            push       
       
       - name: Check ballerina version
         run: bal -v
