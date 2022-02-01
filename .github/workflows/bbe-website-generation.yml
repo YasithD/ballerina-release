@@ -17,13 +17,12 @@ jobs:
         run: |
           cd bbe-generator/json-gen
           cp -r ../../ballerina-distribution/examples .
-          ls
           
       - name: Generate intermediate.json
         uses: ballerina-platform/ballerina-action@slbeta6
         with:
           args:
-            run generate.bal
+            run ./generate.bal
           
 
 
