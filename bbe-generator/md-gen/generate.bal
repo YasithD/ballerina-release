@@ -4,7 +4,8 @@ import ballerina/file;
 import ballerina/regex;
 
 // directories
-string mdbookDir = "./bbe-generator/outputs/mdbook";
+string outputsDir = "./bbe-generator/outputs";
+string mdBookName = "mdbook";
 
 // add file content
 public function addContent(string title, json example) returns error? {
@@ -21,7 +22,7 @@ public function addContent(string title, json example) returns error? {
     }
 
     // file path for the BBE
-    string mdFile = mdbookDir + "/src/categories/" + title + "/" + url + ".md";
+    string mdFile = outputsDir + "/" + mdBookName + "/src/categories/" + title + "/" + url + ".md";
 
     // read the md file
     // string mdContent = check io:fileReadString(mdFile) + "\n\n";
@@ -108,7 +109,7 @@ public function main() returns error? {
     string mdContent = "# Ballerina By Examples\n\n";
 
     // read content from the intermediate.json
-    string dirIntermediate = check file:joinPath(mdbookDir, "intermediate.json");
+    string dirIntermediate = check file:joinPath(outputsDir, "intermediate.json");
     json intermediateContent = check io:fileReadJson(dirIntermediate);
 
     // access the categories
@@ -126,6 +127,6 @@ public function main() returns error? {
     }
 
     // save navigation to SUMMARY.md
-    string dirSummary = check file:joinPath(mdbookDir, "/src/SUMMARY.md");
+    string dirSummary = check file:joinPath(outputsDir, "/" + mdBookName + "/src/SUMMARY.md");
     check io:fileWriteString(dirSummary, mdContent);
 }
