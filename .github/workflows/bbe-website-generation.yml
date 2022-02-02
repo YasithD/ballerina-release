@@ -45,8 +45,12 @@ jobs:
           args:
             run bbe-generator/md-gen/generate.bal  
 
-      - name: Check mdbook Content
-        run: ls ./bbe-generator/output/mdbook/src/categories        
+      - name: Build mdbook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: 'latest'
+
+      - run: mdbook build ./bbe-generator/outputs/mdbook        
 
 
       
