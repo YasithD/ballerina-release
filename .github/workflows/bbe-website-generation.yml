@@ -46,7 +46,7 @@ jobs:
             run bbe-generator/md-gen/generate.bal  
 
       - name: Check mdbook Content
-        run: ls ./bbe-generator/output/mdbook/src/categories        
+        run: ls ./bbe-generator/outputs/mdbook/src/categories        
 
 
       
