@@ -45,19 +45,16 @@ jobs:
         uses: ballerina-platform/ballerina-action@slbeta6
         with:
           args:
-            run bbe-generator/md-gen/generate.bal 
-
-      - name: Check content
-        run: |
-          ls -l ./bbe-generator/outputs
-          ls ./bbe-generator/outputs/mdbook/src/categories/hello-world       
+            run bbe-generator/md-gen/generate.bal       
 
       - name: Build mdbook
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: 'latest'
 
-      - run: mdbook build ./bbe-generator/outputs/mdbook        
+      - run: |
+        mdbook serve ./bbe-generator/outputs/mdbook
+        mdbook build ./bbe-generator/outputs/mdbook        
 
 
       
