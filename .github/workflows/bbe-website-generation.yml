@@ -16,7 +16,10 @@ jobs:
       - name: Copy Examples Directory into json-gen
         run: |
           cd bbe-generator/json-gen
-          cp -r ../../ballerina-distribution/examples .   
+          cp -r ../../ballerina-distribution/examples . 
+
+      - name: Create and Grant Permissions for the Output Folder
+        run: whoami      
           
       - name: Generate intermediate.json
         uses: ballerina-platform/ballerina-action@slbeta6
@@ -24,10 +27,8 @@ jobs:
           args:
             run bbe-generator/json-gen/generate.bal
 
-      - name: Grant Permission for Outputs Folder
-        run: |
-          mkdir ./bbe-generator/outputs/mdbook
-          chmod -R 777 ./bbe-generator/outputs/mdbook    
+      - name: Create mdbook Folder
+        run: mkdir ./bbe-generator/outputs/mdbook
 
       - name: Create mdbook
         uses: peaceiris/actions-mdbook@v1
