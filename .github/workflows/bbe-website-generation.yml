@@ -25,14 +25,16 @@ jobs:
             run bbe-generator/json-gen/generate.bal
 
       - name: Grant Permission for Outputs Folder
-        run: chown -R runner:runner ./bbe-generator/outputs    
+        run: |
+          mkdir ./bbe-generator/outputs/mdbook
+          chmod -R 777 ./bbe-generator/outputs/mdbook    
 
       - name: Create mdbook
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: 'latest'
 
-      - run: mdbook init --title "mdbook" --ignore none ./bbe-generator/outputs/
+      - run: mdbook init --title "Ballerina By Examples" --ignore none ./bbe-generator/outputs/mdbook
           
 
 
