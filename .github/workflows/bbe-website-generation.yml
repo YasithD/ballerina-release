@@ -61,7 +61,7 @@ jobs:
       
       - name: Config Git
         run: |
-          git config --global user.email "yasith.18@cse.mrt.ac.lk"
+          git config --global user.email "59837420+YasithD@users.noreply.github.com"
           git config --global user.name "YasithD"
       
       - name: Commit and Push Changes
@@ -69,7 +69,7 @@ jobs:
           cd ./ballerina-dev-website
           git add .
           git commit -m "mdbook content updated"
-          git push --set-upstream origin dev
+          git push
                
 
 
