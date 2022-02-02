@@ -1,6 +1,6 @@
 name: BBE Website Generation
 
-on: workflow_dispatch
+on: [push, workflow_dispatch]
 
 jobs:
   bbe-generation:
@@ -61,8 +61,8 @@ jobs:
         run: |
           git remote rm origin
           git remote add origin "git@github.com/YasithD/ballerina-release.git"
-          git config user.email "yasith.18@cse.mrt.ac.lk"
-          git config user.name "YasithD"
+          git config --global user.email "yasith.18@cse.mrt.ac.lk"
+          git config --global user.name "YasithD"
       
       - name: Commit and Push Changes
         run: |
