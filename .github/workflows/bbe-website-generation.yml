@@ -17,9 +17,11 @@ jobs:
         run: |
           cd bbe-generator/json-gen
           cp -r ../../ballerina-distribution/examples . 
-
-      - name: Create and Grant Permissions for the Output Folder
-        run: whoami      
+          
+      - name: Create outputs folder
+        run: |
+          chmod -R +rwx ./bbe-generator
+          mkdir ./bbe-generator/outputs
           
       - name: Generate intermediate.json
         uses: ballerina-platform/ballerina-action@slbeta6
