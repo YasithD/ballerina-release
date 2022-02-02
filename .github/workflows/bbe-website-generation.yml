@@ -29,11 +29,6 @@ jobs:
           args:
             run bbe-generator/json-gen/generate.bal
 
-      # - name: Create mdbook Folder
-      #   run: |
-      #     mkdir ./bbe-generator/outputs/mdbook
-      #     chmod -R +rwx ./bbe-generator/outputs/mdbook
-
       - name: Create mdbook
         uses: peaceiris/actions-mdbook@v1
         with:
@@ -53,6 +48,21 @@ jobs:
           mdbook-version: 'latest'
 
       - run: mdbook build ./bbe-generator/outputs/mdbook
+
+      - name: Clone ballerina-dev-website
+        run: git clone https://github.com/YasithD/ballerina-dev-website.git
+
+      - name: Copy HTML Files from the Build
+        run: |
+          rm -rf ./ballerina-dev-website/book 
+          cp -r ./bbe-generator/outputs/mdbook/book ./ballerina-dev-website
+      
+      - name: Commit and Push Changes
+        run: |
+          cd ./ballerina-dev-website
+          git add .
+          git commit -m "mdbook content updated"
+          git push
                
 
 
