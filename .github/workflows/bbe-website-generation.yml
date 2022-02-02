@@ -60,7 +60,7 @@ jobs:
       - name: Config Git
         run: |
           git config --global user.email "yasith.18@cse.mrt.ac.lk"
-          git config --global user.name "Yasith"    
+          git config --global user.name "YasithD"    
       
       - name: Commit and Push Changes
         run: |
