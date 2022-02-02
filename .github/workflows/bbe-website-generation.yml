@@ -50,7 +50,7 @@ jobs:
       - name: Check content
         run: |
           ls -l ./bbe-generator/outputs
-          ls ./bbe-generator/outputs/mdbook/src/categories/function-as-a-service       
+          ls ./bbe-generator/outputs/mdbook/src/categories/hello-world       
 
       - name: Build mdbook
         uses: peaceiris/actions-mdbook@v1
