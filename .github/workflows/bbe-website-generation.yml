@@ -61,7 +61,7 @@ jobs:
 
       - name: Copy HTML Files from the Build
         run: |
-          rm -rf ./ballerina-dev-website/.
+          rm -rf ./ballerina-dev-website/*
           cp -r ./bbe-generator/outputs/mdbook/book/. ./ballerina-dev-website 
       
       - name: Config Git
