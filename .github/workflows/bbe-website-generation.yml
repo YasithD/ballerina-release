@@ -38,6 +38,7 @@ jobs:
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: 'latest'
+
       - run: mdbook init --title "Ballerina By Examples" --ignore none ./bbe-generator/outputs/mdbook
 
       - name: Generate mdbook Content
@@ -50,9 +51,9 @@ jobs:
         uses: peaceiris/actions-mdbook@v1
         with:
           mdbook-version: 'latest'
-      - run: |
-        mdbook serve ./bbe-generator/outputs/mdbook
-        mdbook build ./bbe-generator/outputs/mdbook        
+
+      - run: mdbook serve ./bbe-generator/outputs/mdbook
+               
 
 
       
