@@ -30,7 +30,9 @@ jobs:
             run bbe-generator/json-gen/generate.bal
 
       - name: Create mdbook Folder
-        run: mkdir ./bbe-generator/outputs/mdbook
+        run: |
+          mkdir ./bbe-generator/outputs/mdbook
+          chmod -R +rwx ./bbe-generator/outputs/mdbook
 
       - name: Create mdbook
         uses: peaceiris/actions-mdbook@v1
