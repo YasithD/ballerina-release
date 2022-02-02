@@ -69,21 +69,12 @@ public function addContent(string title, json example) returns error? {
 } 
 
 // update the string for SUMMARY.md from json
-public function updateBook(json category) returns string|error {
+public function updateBook(json category, string titleWithSpaces, string title) returns string|error {
     // md content
     string categoryContent = "";
-    
-    // title of the category
-    string titleTemp = check category.name;
-    string[] splittedTitle = regex:split(titleTemp," ");
-    string title = "";
-    foreach string s in splittedTitle {
-        title += s.toLowerAscii() + "-";
-    }
-    title = title.substring(0,title.length()-1);
 
     // add the category title
-    categoryContent += "- [" + titleTemp + "]" + "(categories/" + title + "/README.md)\n";
+    categoryContent += "- [" + titleWithSpaces + "]" + "(categories/" + title + "/README.md)\n";
     
     // samples of the category file
     json examplesJSON = check category.examples;
@@ -117,7 +108,22 @@ public function main() returns error? {
     json[] categories = <json[]> categoriesTemp;
 
     foreach json c in categories {
-        string|error catContent = updateBook(c);
+        // get the title of the category
+        string titleTemp = check c.name;
+        string[] splittedTitle = regex:split(titleTemp," ");
+        string title = "";
+        foreach string s in splittedTitle {
+            title += s.toLowerAscii() + "-";
+        }
+        title = title.substring(0,title.length()-1);
+        
+        // add README.md file
+        string readmeContent = "# " + titleTemp + "\n\n";
+        string categoryPath = outputsDir + "/" + mdBookName + "/src/categories/" + title + "/README.md";
+        check io:fileWriteString(categoryPath, readmeContent);
+
+        // update subtitles
+        string|error catContent = updateBook(c, titleTemp, title);
 
         if catContent is error {
             panic error("Couldn't generate SUMMARY.md due to an Error");
