@@ -8,10 +8,7 @@ jobs:
     
     steps:
       - name: Checkout Actions
-        uses: actions/checkout@v2   
-
-      - name: Grant Permissions to Runner
-        run: chown -R runner:runner .   
+        uses: actions/checkout@v2    
       
       - name: Clone ballerina-distribution Repository
         run: git clone https://github.com/ballerina-platform/ballerina-distribution.git
@@ -31,14 +28,14 @@ jobs:
             run bbe-generator/json-gen/generate.bal
 
       - name: Create mdbook Folder
-        run: mkdir ./bbe-generator/outputs/mdbook
+        run: ls -l
 
-      - name: Create mdbook
-        uses: peaceiris/actions-mdbook@v1
-        with:
-          mdbook-version: 'latest'
+      # - name: Create mdbook
+      #   uses: peaceiris/actions-mdbook@v1
+      #   with:
+      #     mdbook-version: 'latest'
 
-      - run: mdbook init --title "Ballerina By Examples" --ignore none ./bbe-generator/outputs/mdbook
+      # - run: mdbook init --title "Ballerina By Examples" --ignore none ./bbe-generator/outputs/mdbook
           
 
 
