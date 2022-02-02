@@ -54,15 +54,20 @@ jobs:
       - name: Clone ballerina-dev-website
         run: git clone https://YasithD:$GITHUB_TOKEN@github.com/YasithD/ballerina-dev-website.git
 
+      - name: Checkout to mdbook Branch
+        run: |
+          cd ./ballerina-dev-website
+          git checkout -b mdbook || git checkout mdbook   
+
       - name: Copy HTML Files from the Build
         run: |
-          rm -rf ./ballerina-dev-website/book 
-          # cp -r ./bbe-generator/outputs/mdbook/book ./ballerina-dev-website  
+          rm -rf ./ballerina-dev-website/.
+          cp -r ./bbe-generator/outputs/mdbook/book/. ./ballerina-dev-website 
       
       - name: Config Git
         run: |
           git config --global user.email "59837420+YasithD@users.noreply.github.com"
-          git config --global user.name "YasithD"
+          git config --global user.name "YasithD"    
       
       - name: Commit and Push Changes
         run: |
