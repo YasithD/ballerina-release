@@ -30,14 +30,14 @@ jobs:
             run bbe-generator/json-gen/generate.bal
 
       - name: Create mdbook Folder
-        run: ls -l ./bbe-generator
+        run: mkdir ./bbe-generator/outputs/mdbook
 
-      # - name: Create mdbook
-      #   uses: peaceiris/actions-mdbook@v1
-      #   with:
-      #     mdbook-version: 'latest'
+      - name: Create mdbook
+        uses: peaceiris/actions-mdbook@v1
+        with:
+          mdbook-version: 'latest'
 
-      # - run: mdbook init --title "Ballerina By Examples" --ignore none ./bbe-generator/outputs/mdbook
+      - run: mdbook init --title "Ballerina By Examples" --ignore none ./bbe-generator/outputs/mdbook
           
 
 
