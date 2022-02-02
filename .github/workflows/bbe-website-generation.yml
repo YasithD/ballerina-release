@@ -55,15 +55,12 @@ jobs:
       - name: Copy HTML Files from the Build
         run: |
           rm -rf ./ballerina-dev-website/book 
-          cp -r ./bbe-generator/outputs/mdbook/book ./ballerina-dev-website
-
-      - name: Config Git
-        run: |
-          git config --global user.email "yasith.18@cse.mrt.ac.lk"
-          git config --global user.name "YasithD"    
+          cp -r ./bbe-generator/outputs/mdbook/book ./ballerina-dev-website              
       
       - name: Commit and Push Changes
         run: |
+          git config --global user.email "yasith.18@cse.mrt.ac.lk"
+          git config --global user.name "YasithD"
           cd ./ballerina-dev-website
           git add .
           git commit -m "mdbook content updated"
