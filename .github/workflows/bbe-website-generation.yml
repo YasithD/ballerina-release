@@ -28,7 +28,7 @@ jobs:
             run bbe-generator/json-gen/generate.bal
 
       - name: Create mdbook Folder
-        run: ls -l
+        run: ls -l ./bbe-generator
 
       # - name: Create mdbook
       #   uses: peaceiris/actions-mdbook@v1
