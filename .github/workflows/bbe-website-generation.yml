@@ -5,13 +5,15 @@ on: [push, workflow_dispatch]
 jobs:
   bbe-generation:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.WEBSITE_TOKEN }}
     
     steps:
       - name: Checkout Actions
         uses: actions/checkout@v2    
       
       - name: Clone ballerina-distribution Repository
-        run: git clone https://github.com/ballerina-platform/ballerina-distribution.git
+        run: git clone https://YasithD:$GITHUB_TOKEN@github.com/ballerina-platform/ballerina-distribution.git
 
       - name: Copy Examples Directory into json-gen
         run: |
@@ -50,7 +52,7 @@ jobs:
       - run: mdbook build ./bbe-generator/outputs/mdbook
 
       - name: Clone ballerina-dev-website
-        run: git clone https://github.com/YasithD/ballerina-dev-website.git
+        run: git clone https://YasithD:$GITHUB_TOKEN@github.com/YasithD/ballerina-dev-website.git
 
       - name: Copy HTML Files from the Build
         run: |
@@ -67,7 +69,7 @@ jobs:
           cd ./ballerina-dev-website
           git add .
           git commit -m "mdbook content updated"
-          git push
+          git push --set-upstream origin dev
                
 
 
