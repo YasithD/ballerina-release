@@ -38,7 +38,15 @@ jobs:
           mdbook-version: 'latest'
 
       - run: mdbook init --title "Ballerina By Examples" --ignore none ./bbe-generator/outputs/mdbook
-          
+
+      - name: Generate mdbook Content
+        uses: ballerina-platform/ballerina-action@slbeta6
+        with:
+          args:
+            run bbe-generator/md-gen/generate.bal  
+
+      - name: Check mdbook Content
+        run: ls ./bbe-generator/output/mdbook/src/categories        
 
 
       
