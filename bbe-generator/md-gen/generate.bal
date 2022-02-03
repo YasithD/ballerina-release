@@ -4,8 +4,8 @@ import ballerina/file;
 import ballerina/regex;
 
 // directories
-string outputsDir = "./bbe-generator/outputs";
-string mdBookName = "mdbook";
+configurable string jsonOutputDir = "./bbe-generator/outputs";
+configurable string mdBookDirName = "mdbook";
 
 // add file content
 public function addContent(string title, json example) returns error? {
@@ -22,7 +22,7 @@ public function addContent(string title, json example) returns error? {
     }
 
     // file path for the BBE
-    string mdFile = outputsDir + "/" + mdBookName + "/src/categories/" + title + "/" + url + ".md";
+    string mdFile = jsonOutputDir + "/" + mdBookDirName + "/src/categories/" + title + "/" + url + ".md";
 
     // read the md file
     // string mdContent = check io:fileReadString(mdFile) + "\n\n";
@@ -100,7 +100,7 @@ public function main() returns error? {
     string mdContent = "# Ballerina By Examples\n\n";
 
     // read content from the intermediate.json
-    string dirIntermediate = check file:joinPath(outputsDir, "intermediate.json");
+    string dirIntermediate = check file:joinPath(jsonOutputDir, "intermediate.json");
     json intermediateContent = check io:fileReadJson(dirIntermediate);
 
     // access the categories
@@ -119,7 +119,7 @@ public function main() returns error? {
         
         // add README.md file
         string readmeContent = "# " + titleTemp + "\n\n";
-        string categoryPath = outputsDir + "/" + mdBookName + "/src/categories/" + title + "/README.md";
+        string categoryPath = jsonOutputDir + "/" + mdBookDirName + "/src/categories/" + title + "/README.md";
         check io:fileWriteString(categoryPath, readmeContent);
 
         // update subtitles
@@ -133,6 +133,6 @@ public function main() returns error? {
     }
 
     // save navigation to SUMMARY.md
-    string dirSummary = check file:joinPath(outputsDir, "/" + mdBookName + "/src/SUMMARY.md");
+    string dirSummary = check file:joinPath(jsonOutputDir, "/" + mdBookDirName + "/src/SUMMARY.md");
     check io:fileWriteString(dirSummary, mdContent);
 }

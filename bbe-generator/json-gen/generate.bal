@@ -26,8 +26,8 @@ public type resourceContent record {
 string absolutePath = check file:getAbsolutePath("./");
 
 // Directories - Inputs
-string examplesPath = "./bbe-generator/json-gen/examples";
-string outputPath = "./bbe-generator/outputs/intermediate.json";
+configurable string examplesDir = "./bbe-generator/json-gen/examples";
+configurable string outputDir = "./bbe-generator/outputs";
 
 // read a JSON file
 public function read(string fileName) returns json|error {
@@ -54,9 +54,9 @@ public function findRecord(string tag, resourceContent[] resources) returns reso
 
 // find bbe
 // returns the absolute directory if found
-public function findBBE(string url, string examplesPath) returns string?|error {
+public function findBBE(string url, string examplesDir) returns string?|error {
     // read examples directory
-    file:MetaData[] directories = check file:readDir(examplesPath);
+    file:MetaData[] directories = check file:readDir(examplesDir);
 
     foreach file:MetaData dir in directories {
         // absolute path and relative path
@@ -74,9 +74,9 @@ public function findBBE(string url, string examplesPath) returns string?|error {
 
 // generate the BBEs
 // provide the path to the BBE folder
-public function generateBBE(string examplesPath) returns error? {
+public function generateBBE(string examplesDir) returns error? {
     // read index.json
-    string dirIndexJSON = check file:joinPath(examplesPath, "/index.json");
+    string dirIndexJSON = check file:joinPath(examplesDir, "/index.json");
     json indexJSON = check io:fileReadJson(dirIndexJSON);
     json[] categories = <json[]> indexJSON;
 
@@ -103,7 +103,7 @@ public function generateBBE(string examplesPath) returns error? {
             string url = check sample.url;
 
             // get the absolute directory of the bbe
-            string? absDir = check findBBE(url, examplesPath);
+            string? absDir = check findBBE(url, examplesDir);
 
             if absDir == () {
                 // if bbe is not found
@@ -258,7 +258,8 @@ public function generateBBE(string examplesPath) returns error? {
     }
 
     // write to intermediate json
-    check io:fileWriteJson(outputPath, intermediate);
+    string intermediatePath = check file:joinPath(outputDir, "intermediate.json");
+    check io:fileWriteJson(intermediatePath, intermediate);
     io:println("Intermediate JSON file created");
 }
 
@@ -267,7 +268,7 @@ public function main() returns error? {
     time:Utc startTime = time:utcNow();
 
     // generate BBEs
-    check generateBBE(examplesPath);
+    check generateBBE(examplesDir);
 
     // ending time
     time:Utc endingTime = time:utcNow();
