@@ -71,12 +71,21 @@ jobs:
           git config --global user.email "59837420+YasithD@users.noreply.github.com"
           git config --global user.name "YasithD"    
       
-      - name: Commit and Push Changes
+      # - name: Commit and Push Changes
+      #   run: |
+      #     cd ./ballerina-dev-website
+      #     git add .
+      #     git commit -m "mdbook content updated"
+      #     git push
+
+      - name: Create pull request for new BBEs
+        shell: bash
         run: |
           cd ./ballerina-dev-website
-          git add .
-          git commit -m "mdbook content updated"
-          git push
+          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+          bin/hub pull-request -b dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                
 
 
