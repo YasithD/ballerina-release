@@ -54,10 +54,10 @@ jobs:
       - name: Clone ballerina-dev-website
         run: git clone https://YasithD:$GITHUB_TOKEN@github.com/YasithD/ballerina-dev-website.git
 
-      # - name: Checkout to mdbook Branch
-      #   run: |
-      #     cd ./ballerina-dev-website
-      #     git checkout -b mdbook || git checkout mdbook   
+      - name: Checkout to mdbook Branch
+        run: |
+          cd ./ballerina-dev-website
+          git checkout -b mdbook || git checkout mdbook   
 
       - name: Copy HTML Files from the Build
         run: |
