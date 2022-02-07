@@ -75,8 +75,8 @@ jobs:
         run: |
           cd ./ballerina-dev-website
           git add ./book
-          git commit -m "mdbook content updated"
-          git push --set-upstream origin mdbook || git push
+          git commit --allow-empty -m "mdbook content updated"
+          git push || git push --set-upstream origin mdbook
 
       # - name: Create pull request for new BBEs
       #   shell: bash
