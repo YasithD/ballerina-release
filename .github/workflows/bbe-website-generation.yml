@@ -57,14 +57,14 @@ jobs:
       - name: Checkout to mdbook Branch
         run: |
           cd ./ballerina-dev-website
-          git checkout -b mdbook1 || git checkout mdbook1   
+          git checkout -b mdbook || git checkout mdbook  
 
       - name: Copy HTML Files from the Build
         run: |
-          rm -rf ./ballerina-dev-website/* !".git" !".gitignore"
-          cp -r ./bbe-generator/outputs/mdbook/book/. ./ballerina-dev-website 
-          # rm -rf ./ballerina-dev-website/book
-          # cp -r ./bbe-generator/outputs/mdbook/book ./ballerina-dev-website 
+          # rm -rf ./ballerina-dev-website/* !".git" !".gitignore"
+          # cp -r ./bbe-generator/outputs/mdbook/book/. ./ballerina-dev-website 
+          rm -rf ./ballerina-dev-website/book
+          cp -r ./bbe-generator/outputs/mdbook/book ./ballerina-dev-website 
       
       - name: Config Git
         run: |
@@ -76,7 +76,7 @@ jobs:
           cd ./ballerina-dev-website
           git add ./book
           git commit -m "mdbook content updated"
-          git push
+          git push --set-upstream origin mdbook || git push
 
       # - name: Create pull request for new BBEs
       #   shell: bash
