@@ -54,10 +54,10 @@ jobs:
       - name: Clone ballerina-dev-website
         run: git clone https://YasithD:$GITHUB_TOKEN@github.com/YasithD/ballerina-dev-website.git
 
-      - name: Checkout to mdbook Branch
-        run: |
-          cd ./ballerina-dev-website
-          git checkout -b mdbook_test || git checkout mdbook_test 
+      # - name: Checkout to mdbook Branch
+      #   run: |
+      #     cd ./ballerina-dev-website
+      #     git checkout -b mdbook_test || git checkout mdbook_test 
 
       - name: Copy HTML Files from the Build
         run: |
@@ -76,16 +76,16 @@ jobs:
           cd ./ballerina-dev-website
           git add ./book
           git commit --allow-empty -m "mdbook content updated"
-          git push --set-upstream origin mdbook_test
+          git push
 
-      - name: Create pull request for new BBEs
-        shell: bash
-        run: |
-          cd ./ballerina-dev-website
-          curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
-          bin/hub pull-request -b dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: Create pull request for new BBEs
+      #   shell: bash
+      #   run: |
+      #     cd ./ballerina-dev-website
+      #     curl -fsSL https://github.com/github/hub/raw/master/script/get | bash -s 2.14.1
+      #     bin/hub pull-request -b dev -m '[Automated] Update Ballerina By Example(BBEs) pages'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
                
 
 
