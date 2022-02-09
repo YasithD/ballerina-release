@@ -58,7 +58,7 @@ public function addContent(string title, json example) returns error? {
         if balContent.length() == 0 {
             output = "```go\n" + outputContent + "\n```";
         } else {
-            output = "#### Output\n\n```go\n" + outputContent + "\n```";
+            output = "#### Output\n\n```bash\n" + outputContent + "\n```";
         }
 
         mdContent += bal + output;
